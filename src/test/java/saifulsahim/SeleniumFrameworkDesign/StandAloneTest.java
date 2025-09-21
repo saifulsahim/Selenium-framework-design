@@ -3,6 +3,7 @@ package saifulsahim.SeleniumFrameworkDesign;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -33,6 +34,7 @@ public class StandAloneTest {
 		
 		//WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/client");
 		
 		driver.findElement(By.id("userEmail")).sendKeys("saifulsahim@gmail.com");
@@ -51,9 +53,12 @@ public class StandAloneTest {
 		// click last button out of 2 buttons (View, add to cart)
 		prod.findElement(By.cssSelector(".card-body button:last-of-type")).click(); 
 		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container"))); // waiting to load Toast "added to cart"
-		// Waiting for the animation class to disappear by passing the complete WebElement.
-		// Using invisibilityOf instead of visibilityOfElementLocated to improve performance.		
+		// waiting to load Toast "added to cart"
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container"))); 
+		/*
+		 * Waiting for the animation class to disappear by passing the complete
+		 * WebElement. Using invisibilityOf instead of visibilityOfElementLocated to improve performance.
+		 */	
 		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.cssSelector(".ng-animating")))); 
 		// Using custom css selector [attribute = 'value'] and also using regular expression
 		driver.findElement(By.cssSelector("[routerlink*='cart']")).click();
@@ -62,6 +67,18 @@ public class StandAloneTest {
 		Boolean match = cartProducts.stream().anyMatch(cartProduct->cartProduct.getText().equalsIgnoreCase(productName));
 		Assert.assertTrue(match);
 		driver.findElement(By.cssSelector(".totalRow button")).click();
+		
+		Actions a = new Actions(driver);
+		// Just trying actions instead of sendKeys
+		a.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "India").build().perform();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
+		
+		// After searched items, click 2nd which is india
+		driver.findElement(By.xpath("(//button[contains(@class,'ta-item')])[2]")).click();
+		driver.findElement(By.cssSelector(".action__submit")).click();
+		 
+		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
+		Assert.assertTrue(confirmMessage.equalsIgnoreCase("Thankyou for the order."));
 	}
 	
 	
