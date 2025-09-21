@@ -28,7 +28,6 @@ public class StandAloneTest {
 		options.addArguments("--incognito"); 
 
 		WebDriver driver = new ChromeDriver(options);
-
 		
 		//WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
