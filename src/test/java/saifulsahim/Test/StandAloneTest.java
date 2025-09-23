@@ -33,7 +33,7 @@ public class StandAloneTest extends BaseTest{
 	public void submitOrder() throws IOException, InterruptedException {
 
 		String productName = "ZARA COAT 3";
-		LandingPage landingPage = launchApplication();
+		//LandingPage landingPage = launchApplication();
 		ProductCatalogue productCatalogue = landingPage.loginApplication("saifulsahim@gmail.com", "Sahim123#");
 
 		List<WebElement> products = productCatalogue.getProductList();
