@@ -1,31 +1,17 @@
 package saifulsahim.Test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import saifulsahim.SeleniumFrameworkDesign.pageobjects.CartPage;
-import saifulsahim.SeleniumFrameworkDesign.pageobjects.CheckOutPage;
-import saifulsahim.SeleniumFrameworkDesign.pageobjects.ConfirmationMessage;
-import saifulsahim.SeleniumFrameworkDesign.pageobjects.LandingPage;
-import saifulsahim.SeleniumFrameworkDesign.pageobjects.ProductCatalogue;
-import saifulsahim.TestComponents.BaseTest;
+import java.io.IOException;
+import java.util.List;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import saifulsahim.SeleniumFrameworkDesign.pageobjects.CartPage;
+import saifulsahim.SeleniumFrameworkDesign.pageobjects.CheckOutPage;
+import saifulsahim.SeleniumFrameworkDesign.pageobjects.ConfirmationMessage;
+import saifulsahim.SeleniumFrameworkDesign.pageobjects.ProductCatalogue;
+import saifulsahim.TestComponents.BaseTest;
 
 public class StandAloneTest extends BaseTest{
 	

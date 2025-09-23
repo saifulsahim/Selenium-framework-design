@@ -29,6 +29,11 @@ public class AbstractComponent {
 		// wait for the products list to load
 		wait.until(ExpectedConditions.visibilityOfElementLocated(findBy)); 
 	}
+	public void waitForWebElementToAppear(WebElement findBy) {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+		// wait for the products list to load
+		wait.until(ExpectedConditions.visibilityOf(findBy)); 
+	}
 	
 	public CartPage goToCartPage()
 	{
