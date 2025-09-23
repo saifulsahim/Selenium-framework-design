@@ -1,4 +1,4 @@
-package saifulsahim.SeleniumFrameworkDesign;
+package saifulsahim.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import saifulsahim.SeleniumFrameworkDesign.pageobjects.LandingPage;
